@@ -449,11 +449,22 @@ body.dark-theme .sm-bar-btn:hover,
 
 body.dark-theme .sm-bar-clear,
 [data-theme="dark"] .sm-bar-clear {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 body.dark-theme .sm-bar-clear:hover,
 [data-theme="dark"] .sm-bar-clear:hover {
+  background: rgba(139, 92, 246, 0.2);
+  color: #c4b5fd;
+}
+
+body.dark-theme .sm-remove-btn,
+[data-theme="dark"] .sm-remove-btn {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-theme .sm-remove-btn:hover,
+[data-theme="dark"] .sm-remove-btn:hover {
   background: rgba(139, 92, 246, 0.2);
   color: #c4b5fd;
 }
@@ -478,6 +489,8 @@ body.dark-theme .sm-item:hover,
 
 body.dark-theme .sm-item-name,
 [data-theme="dark"] .sm-item-name,
+body.dark-theme .sm-item-name strong,
+[data-theme="dark"] .sm-item-name strong,
 body.dark-theme .sm-section-header,
 [data-theme="dark"] .sm-section-header,
 body.dark-theme .sm-recent-text,

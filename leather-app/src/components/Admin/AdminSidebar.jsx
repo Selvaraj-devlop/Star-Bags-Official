@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import ConfirmModal from './ConfirmModal';
+import { useAuth } from '../../context/AuthContext';
 
 const navItems = [
   { icon: 'bi-grid-1x2-fill',            label: 'Dashboard',              path: '/admin/dashboard' },
@@ -16,6 +17,7 @@ const navItems = [
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -163,10 +165,16 @@ const AdminSidebar = () => {
       <ConfirmModal
         isOpen={showLogoutModal}
         onClose={() => setShowLogoutModal(false)}
-        onConfirm={() => {
+        onConfirm={async () => {
           setShowLogoutModal(false);
-          localStorage.removeItem('user');
-          navigate('/login');
+          try {
+            await logout();
+            navigate('/login');
+          } catch (error) {
+            console.error("Logout failed", error);
+            localStorage.removeItem('user');
+            navigate('/login');
+          }
         }}
         title="Confirm Logout"
         message="Are you sure you want to Logout ?"
